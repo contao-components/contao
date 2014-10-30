@@ -18,11 +18,11 @@
                 "js/core.min.js",
                 "js/mootao.min.js"
             ],
+            "styles": [
+                "css/*.min.css"
+            ],
             "files": [
-                "css/*",
-                "images/*",
-                "js/core.js",
-                "js/mootao.js"
+                "images/*"
            ]
         }
     }
