@@ -1,0 +1,29 @@
+{
+    "name": "contao-components/contao",
+    "type": "component",
+    "description": "Contao Open Source CMS components",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Leo Feyer",
+            "homepage": "https://github.com/leofeyer"
+        }
+    ],
+    "require": {
+        "robloach/component-installer": "~0.0"
+    },
+    "extra": {
+        "component": {
+            "scripts": [
+                "js/core.min.js",
+                "js/mootao.min.js"
+            ],
+            "files": [
+                "css/*",
+                "images/*",
+                "js/core.js",
+                "js/mootao.js"
+           ]
+        }
+    }
+}
