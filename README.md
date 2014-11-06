@@ -1,9 +1,8 @@
-Contao CSS framework
-====================
+Contao assets
+=============
 
-This is the Contao CSS framework to be integrated in
-[Contao Open Source CMS][1] via the Composer [components installer][2].
+These are the [Contao Open Source CMS][1] assets, such as the CSS framework,
+the default icons and the back end JavaScripts.
 
 
 [1]: https://contao.org
-[2]: http://robloach.github.io/component-installer/

@@ -1,6 +1,6 @@
 {
     "name": "contao-components/contao",
-    "type": "component",
+    "type": "contao-component",
     "description": "Contao Open Source CMS components",
     "license": "MIT",
     "authors": [
@@ -10,20 +10,6 @@
         }
     ],
     "require": {
-        "robloach/component-installer": "~0.0"
-    },
-    "extra": {
-        "component": {
-            "scripts": [
-                "js/core.min.js",
-                "js/mootao.min.js"
-            ],
-            "styles": [
-                "css/*.min.css"
-            ],
-            "files": [
-                "images/*"
-           ]
-        }
+        "contao-components/installer": "~1.0"
     }
 }
