@@ -856,7 +856,7 @@ var Backend =
 				alert('Could not find the SimpleModal frame');
 				return;
 			}
-			if (frm.document.location.href.indexOf('contao/main.php') != -1) {
+			if (frm.document.location.href.indexOf('/contao?') != -1) {
 				alert(Contao.lang.picker);
 				return; // see #5704
 			}
@@ -867,13 +867,13 @@ var Backend =
 			}
 			if (opt.tag) {
 				$(opt.tag).value = val.join(',');
-				if (opt.url.match(/page\.php/)) {
+				if (opt.url.indexOf('contao/page?') != -1) {
 					$(opt.tag).value = '{{link_url::' + $(opt.tag).value + '}}';
 				}
 				opt.self.set('href', opt.self.get('href').replace(/&value=[^&]*/, '&value='+val.join(',')));
 			} else {
 				$('ctrl_'+opt.id).value = val.join("\t");
-				var act = (opt.url.indexOf('contao/page.php') != -1) ? 'reloadPagetree' : 'reloadFiletree';
+				var act = (opt.url.indexOf('contao/page?') != -1) ? 'reloadPagetree' : 'reloadFiletree';
 				new Request.Contao({
 					field: $('ctrl_'+opt.id),
 					evalScripts: false,
@@ -904,11 +904,11 @@ var Backend =
 	 * @param {object} win        The window object
 	 */
 	openModalBrowser: function(field_name, url, type, win) {
-		var file = 'file.php',
+		var file = '/file',
 			swtch = (type == 'file' ? '&amp;switch=1' : ''),
 			isLink = (url.indexOf('{{link_url::') != -1);
 		if (type == 'file' && (url == '' || isLink)) {
-			file = 'page.php';
+			file = '/page';
 		}
 		if (isLink) {
 			url = url.replace(/^\{\{link_url::([0-9]+)\}\}$/, '$1');
@@ -946,7 +946,7 @@ var Backend =
 		});
 		M.show({
 			'title': win.document.getElement('div.mce-title').get('text'),
-			'contents': '<iframe src="contao/' + file + '?table=tl_content&amp;field=singleSRC&amp;value=' + url + swtch + '" name="simple-modal-iframe" width="100%" height="' + (window.getSize().y-180).toInt() + '" frameborder="0"></iframe>',
+			'contents': '<iframe src="' + document.location.pathname + file + '?table=tl_content&amp;field=singleSRC&amp;value=' + url + swtch + '" name="simple-modal-iframe" width="100%" height="' + (window.getSize().y-180).toInt() + '" frameborder="0"></iframe>',
 			'model': 'modal'
 		});
 	},
@@ -1148,43 +1148,6 @@ var Backend =
 	 */
 	addColorPicker: function() {
 		return true;
-	},
-
-	/**
-	 * Open the page picker wizard in a modal window
-	 *
-	 * @param {string} id The ID of the target element
-	 *
-	 * @deprecated Use Backend.openModalIframe() instead
-	 */
-	pickPage: function(id) {
-		var width = 320,
-			height = 112;
-
-		Backend.currentId = id;
-		Backend.ppValue = $(id).value;
-
-		Backend.getScrollOffset();
-		window.open($$('base')[0].href + 'contao/page.php?value=' + Backend.ppValue, '', 'width='+width+',height='+height+',modal=yes,left='+(Backend.xMousePosition ? (Backend.xMousePosition-(width/2)) : 200)+',top='+(Backend.yMousePosition ? (Backend.yMousePosition-(height/2)+80) : 100)+',location=no,menubar=no,resizable=yes,scrollbars=no,status=no,toolbar=no');
-	},
-
-	/**
-	 * Open the file picker wizard in a modal window
-	 *
-	 * @param {string} id     The ID of the target element
-	 * @param {string} filter The filter value
-	 *
-	 * @deprecated Use Backend.openModalIframe() instead
-	 */
-	pickFile: function(id, filter) {
-		var width = 320,
-			height = 112;
-
-		Backend.currentId = id;
-		Backend.ppValue = $(id).value;
-
-		Backend.getScrollOffset();
-		window.open($$('base')[0].href + 'contao/file.php?value=' + Backend.ppValue + '&filter=' + filter, '', 'width='+width+',height='+height+',modal=yes,left='+(Backend.xMousePosition ? (Backend.xMousePosition-(width/2)) : 200)+',top='+(Backend.yMousePosition ? (Backend.yMousePosition-(height/2)+80) : 100)+',location=no,menubar=no,resizable=yes,scrollbars=no,status=no,toolbar=no');
 	},
 
 	/**
