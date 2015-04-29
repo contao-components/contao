@@ -1996,6 +1996,65 @@ var Backend =
 	},
 
 	/**
+	 * Allow to toggle checkboxes clicking a row
+	 *
+	 * @author Kamil Kuzminski
+	 */
+	enableToggleCheckboxes: function() {
+		var container = $('tl_select'),
+			checkboxes = [], start, thisIndex, startIndex, status, from, to,
+			shiftToggle = function(el) {
+				thisIndex = checkboxes.indexOf(el);
+				startIndex = checkboxes.indexOf(start);
+				from = Math.min(thisIndex, startIndex);
+				to = Math.max(thisIndex, startIndex);
+				status = checkboxes[startIndex].checked ? true : false;
+
+				for (from; from<=to; from++) {
+					checkboxes[from].checked = status;
+				}
+			};
+
+		if (container) {
+			checkboxes = container.getElements('input[type="checkbox"]');
+		}
+
+		// Row click
+		$$('.toggle_select').each(function(el) {
+			el.addEvent('click', function(e) {
+				var input = $(el).getElement('input[type="checkbox"]');
+
+				if (!input) {
+					return;
+				}
+
+				if (e.shift && start) {
+					shiftToggle(input);
+				} else {
+					input.checked = input.checked ? '' : 'checked';
+
+					if (input.get('onclick') == 'Backend.toggleCheckboxes(this)') {
+						Backend.toggleCheckboxes(input); // see #6399
+					}
+				}
+
+				start = input;
+			});
+		});
+
+		// Checkbox click
+		checkboxes.each(function(el) {
+			el.addEvent('click', function(e) {
+				if (e.shift && start) {
+					shiftToggle(this);
+				}
+
+				start = this;
+			});
+		});
+	},
+
+	/**
 	 * Allow to mark the important part of an image
 	 *
 	 * @param {object} el The DOM element
@@ -2144,6 +2203,7 @@ window.addEvent('domready', function() {
 	Backend.convertEnableModules();
 	Backend.makeWizardsSortable();
 	Backend.enableImageSizeWidgets();
+	Backend.enableToggleCheckboxes();
 
 	// Chosen
 	if (Elements.chosen != undefined) {
