@@ -57,7 +57,7 @@ input[type="file"] {
 select,input[type="file"] {
 	display:block;
 }
-input[type="file"],input[type="image"],input[type="submit"],input[type="reset"],input[type="button"],input[type="radio"],input[type="checkbox"] {
+button,input[type="file"],input[type="image"],input[type="submit"],input[type="reset"],input[type="button"],input[type="radio"],input[type="checkbox"] {
 	width:auto;
 }
 textarea,select[multiple],select[size] {
@@ -88,7 +88,7 @@ input[type="radio"][disabled],input[type="checkbox"][disabled],input[type="radio
 /**
  * Buttons
  */
-input[type="submit"],.button {
+button,input[type="submit"],.button {
 	display:inline-block;
 	padding:4px 15px 4px 14px;
 	margin-bottom:0;
@@ -114,11 +114,11 @@ input[type="submit"],.button {
 	-o-transition:background .15s linear;
 	transition:background .15s linear;
 }
-input[type="submit"]:hover,.button:hover {
+button:hover,input[type="submit"]:hover,.button:hover {
 	text-decoration:none;
 	background-position:0 -15px !important;
 }
-input[type="submit"]:active,.button:active {
+button:active,input[type="submit"]:active,.button:active {
 	background-color:#e6e6e6;
 	background-position:0 -30px !important;
 }
@@ -126,7 +126,7 @@ input[type="submit"]:active,.button:active {
 /**
  * Blue buttons
  */
-input[type="submit"].blue,.button.blue {
+button.blue,input[type="submit"].blue,.button.blue {
 	background-color:#2f96b4;
 	background-image:-moz-linear-gradient(top, #5bc0de, #2f96b4);
 	background-image:-webkit-linear-gradient(top, #5bc0de, #2f96b4);
@@ -136,14 +136,14 @@ input[type="submit"].blue,.button.blue {
 	border-color:#2f96b4;
 	color:#fff;
 }
-input[type="submit"].blue:active,.button.blue:active {
+button.blue:active,input[type="submit"].blue:active,.button.blue:active {
 	background-color:#2e95b3;
 }
 
 /**
  * Green buttons
  */
-input[type="submit"].green,.button.green {
+button.green,input[type="submit"].green,.button.green {
 	background-color:#51a351;
 	background-image:-moz-linear-gradient(top, #62c462, #51a351);
 	background-image:-webkit-linear-gradient(top, #62c462, #51a351);
@@ -153,14 +153,14 @@ input[type="submit"].green,.button.green {
 	border-color:#51a351;
 	color:#fff;
 }
-input[type="submit"].green:active,.button.green:active {
+button.green:active,input[type="submit"].green:active,.button.green:active {
 	background-color:#4f9f4f;
 }
 
 /**
  * Orange buttons
  */
-input[type="submit"].orange,.button.orange {
+button.orange,input[type="submit"].orange,.button.orange {
 	background-color:#f89406;
 	background-image:-moz-linear-gradient(top, #fbb450, #f89406);
 	background-image:-webkit-linear-gradient(top, #fbb450, #f89406);
@@ -170,14 +170,14 @@ input[type="submit"].orange,.button.orange {
 	border-color:#f89406;
 	color:#fff;
 }
-input[type="submit"].orange:active,.button.orange:active {
+button.orange:active,input[type="submit"].orange:active,.button.orange:active {
 	background-color:#f28f04;
 }
 
 /**
  * Red buttons
  */
-input[type="submit"].red,.button.red {
+button.red,input[type="submit"].red,.button.red {
 	background-color:#bd362f;
 	background-image:-moz-linear-gradient(top, #ee5f5b, #bd362f);
 	background-image:-webkit-linear-gradient(top, #ee5f5b, #bd362f);
@@ -187,6 +187,6 @@ input[type="submit"].red,.button.red {
 	border-color:#bd362f;
 	color:#fff;
 }
-input[type="submit"].red:active,.button.red:active {
+button.red:active,input[type="submit"].red:active,.button.red:active {
 	background-color:#be322b;
 }
