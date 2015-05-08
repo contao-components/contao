@@ -860,7 +860,7 @@ var Backend =
 				alert(Contao.lang.picker);
 				return; // see #5704
 			}
-			inp = frm.document.getElementById('tl_listing').getElementsByTagName('input');
+			inp = frm.document.getElementById('tl_select').getElementsByTagName('input');
 			for (i=0; i<inp.length; i++) {
 				if (!inp[i].checked || inp[i].id.match(/^check_all_/)) continue;
 				if (!inp[i].id.match(/^reset_/)) val.push(inp[i].get('value'));
@@ -931,7 +931,7 @@ var Backend =
 				alert('Could not find the SimpleModal frame');
 				return;
 			}
-			inp = frm.document.getElementById('tl_listing').getElementsByTagName('input');
+			inp = frm.document.getElementById('tl_select').getElementsByTagName('input');
 			for (i=0; i<inp.length; i++) {
 				if (inp[i].checked && !inp[i].id.match(/^reset_/)) {
 					val = inp[i].get('value');
@@ -1996,11 +1996,11 @@ var Backend =
 	},
 
 	/**
-	 * Allow to toggle checkboxes clicking a row
+	 * Allow to toggle checkboxes or radio buttons by clicking a row
 	 *
 	 * @author Kamil Kuzminski
 	 */
-	enableToggleCheckboxes: function() {
+	enableToggleSelect: function() {
 		var container = $('tl_select'),
 			checkboxes = [], start, thisIndex, startIndex, status, from, to,
 			shiftToggle = function(el) {
@@ -2022,12 +2022,21 @@ var Backend =
 		// Row click
 		$$('.toggle_select').each(function(el) {
 			el.addEvent('click', function(e) {
-				var input = $(el).getElement('input[type="checkbox"]');
+				var input = $(el).getElement('input[type="checkbox"],input[type="radio"]');
 
 				if (!input) {
 					return;
 				}
 
+				// Radio buttons
+				if (input.type == 'radio') {
+					if (!input.checked) {
+						input.checked = 'checked';
+					}
+					return;
+				}
+
+				// Checkboxes
 				if (e.shift && start) {
 					shiftToggle(input);
 				} else {
@@ -2203,7 +2212,7 @@ window.addEvent('domready', function() {
 	Backend.convertEnableModules();
 	Backend.makeWizardsSortable();
 	Backend.enableImageSizeWidgets();
-	Backend.enableToggleCheckboxes();
+	Backend.enableToggleSelect();
 
 	// Chosen
 	if (Elements.chosen != undefined) {
