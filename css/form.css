@@ -190,3 +190,49 @@ button.red,input[type="submit"].red,.button.red {
 button.red:active,input[type="submit"].red:active,.button.red:active {
 	background-color:#be322b;
 }
+
+/**
+ * Basic form layout
+ */
+.widget {
+	margin-bottom:12px;
+}
+.widget > label {
+	display:block;
+	margin-bottom:6px;
+	font-weight:bold;
+}
+.widget > input,.widget > textarea {
+	width:100%;
+}
+
+/**
+ * Inline form layout
+ */
+.inline-form .widget {
+	display:inline-block;
+	margin-bottom:0;
+	vertical-align:middle;
+}
+
+/**
+ * Horizontal form layout
+ */
+.horizontal-form .widget:after {
+	content:"";
+	display:table;
+	clear:both;
+}
+.horizontal-form .widget > label {
+	width:20%;
+	float:left;
+	padding:3px 2% 0 0;
+	text-align:right;
+}
+.horizontal-form .widget > input,.horizontal-form .widget > textarea {
+	width:78%;
+	float:left;
+}
+.horizontal-form .widget > fieldset {
+	margin-left:20%;
+}
