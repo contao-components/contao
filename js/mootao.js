@@ -80,7 +80,7 @@ Request.Contao = new Class(
 	}
 });
 
-// Backwards compatibility
+// Deprecated since Contao 4.0, to be removed in Contao 5.0
 Request.Mixed = Request.Contao;
 
 

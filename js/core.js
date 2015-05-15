@@ -445,7 +445,7 @@ var AjaxRequest =
 				AjaxRequest.hideBox();
 
 				// HOOK
-				window.fireEvent('subpalette'); // Backwards compatibility
+				window.fireEvent('subpalette'); // Deprecated since Contao 4.0, to be removed in Contao 5.0
 				window.fireEvent('ajax_change');
 			}
 		}).post({'action':'toggleSubpalette', 'id':id, 'field':field, 'load':1, 'state':1, 'REQUEST_TOKEN':Contao.request_token});
@@ -867,14 +867,14 @@ var Backend =
 			}
 			if (opt.tag) {
 				$(opt.tag).value = val.join(',');
-				if (opt.url.indexOf('contao/page?') != -1) {
+				if (frm.document.location.href.indexOf('contao/page?') != -1) {
 					$(opt.tag).value = '{{link_url::' + $(opt.tag).value + '}}';
 				}
 				opt.self.set('href', opt.self.get('href').replace(/&value=[^&]*/, '&value='+val.join(',')));
 			} else {
 				field = $('ctrl_' + opt.id);
 				field.value = val.join("\t");
-				var act = (opt.url.indexOf('contao/page?') != -1) ? 'reloadPagetree' : 'reloadFiletree';
+				var act = (frm.document.location.href.indexOf('contao/page?') != -1) ? 'reloadPagetree' : 'reloadFiletree';
 				new Request.Contao({
 					field: field,
 					evalScripts: false,
