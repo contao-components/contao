@@ -65,10 +65,6 @@ li.download-element {
 	background-image:url("../images/iconPHP.gif");
 }
 
-.ext-pdf {
-	background-image:url("../images/iconPLAIN.gif");
-}
-
 .ext-dmg, .ext-gtar, .ext-rar, .ext-sit, .ext-tar, .ext-taz, .ext-zip {
 	background-image:url("../images/iconRAR.gif");
 }
