@@ -1274,7 +1274,7 @@ var Backend =
 		});
 
 		var list = new Sortables(ul, {
-			contstrain: true,
+			constrain: true,
 			opacity: 0.6,
 			onStart: function() {
 				ds.start();
@@ -1345,7 +1345,7 @@ var Backend =
 	 */
 	makeMultiSrcSortable: function(id, oid) {
 		var list = new Sortables($(id), {
-			contstrain: true,
+			constrain: true,
 			opacity: 0.6
 		}).addEvent('complete', function() {
 			var els = [],
@@ -1365,7 +1365,7 @@ var Backend =
 	makeWizardsSortable: function() {
 		$$('.tl_listwizard').each(function(el) {
 			new Sortables(el, {
-				contstrain: true,
+				constrain: true,
 				opacity: 0.6,
 				handle: '.drag-handle'
 			});
@@ -1374,7 +1374,7 @@ var Backend =
 		$$('.tl_tablewizard').each(function(el) {
 			var els = el.getElement('.sortable');
 			new Sortables(els, {
-				contstrain: true,
+				constrain: true,
 				opacity: 0.6,
 				handle: '.drag-handle',
 				onComplete: function() {
@@ -1385,7 +1385,7 @@ var Backend =
 
 		$$('.tl_modulewizard').each(function(el) {
 			new Sortables(el.getElement('.sortable'), {
-				contstrain: true,
+				constrain: true,
 				opacity: 0.6,
 				handle: '.drag-handle'
 			});
@@ -1393,7 +1393,7 @@ var Backend =
 
 		$$('.tl_optionwizard').each(function(el) {
 			new Sortables(el.getElement('.sortable'), {
-				contstrain: true,
+				constrain: true,
 				opacity: 0.6,
 				handle: '.drag-handle'
 			});
@@ -1404,7 +1404,7 @@ var Backend =
 			if (els.hasClass('sortable-done')) return;
 
 			new Sortables(els, {
-				contstrain: true,
+				constrain: true,
 				opacity: 0.6,
 				handle: '.drag-handle'
 			});
@@ -1468,7 +1468,7 @@ var Backend =
 		}
 
 		new Sortables(list, {
-			contstrain: true,
+			constrain: true,
 			opacity: 0.6,
 			handle: '.drag-handle'
 		});
@@ -1586,7 +1586,7 @@ var Backend =
 		Backend.tableWizardResort(tbody);
 
 		new Sortables(tbody, {
-			contstrain: true,
+			constrain: true,
 			opacity: 0.6,
 			handle: '.drag-handle',
 			onComplete: function() {
@@ -1720,7 +1720,7 @@ var Backend =
 		}
 
 		new Sortables(tbody, {
-			contstrain: true,
+			constrain: true,
 			opacity: 0.6,
 			handle: '.drag-handle'
 		});
@@ -1796,7 +1796,7 @@ var Backend =
 		}
 
 		new Sortables(tbody, {
-			contstrain: true,
+			constrain: true,
 			opacity: 0.6,
 			handle: '.drag-handle'
 		});
@@ -1865,7 +1865,7 @@ var Backend =
 		}
 
 		new Sortables(tbody, {
-			contstrain: true,
+			constrain: true,
 			opacity: 0.6,
 			handle: '.drag-handle'
 		});
