@@ -1341,9 +1341,10 @@ var Backend =
 	 * Make multiSRC items sortable
 	 *
 	 * @param {string} id  The ID of the target element
-	 * @param {string} oid The DOM element
+	 * @param {string} oid The order field
+	 * @param {string} val The value field
 	 */
-	makeMultiSrcSortable: function(id, oid) {
+	makeMultiSrcSortable: function(id, oid, val) {
 		var list = new Sortables($(id), {
 			contstrain: true,
 			opacity: 0.6
@@ -1355,6 +1356,18 @@ var Backend =
 				els.push(lis[i].get('data-id'));
 			}
 			$(oid).value = els.join(',');
+		});
+		$(id).getElements('.gimage.removable').each(function(el) {
+			new Element('button', {
+				html: '&times;',
+				'class': 'tl_red'
+			}).addEvent('click', function() {
+				var li = el.getParent('li'),
+					did = li.get('data-id');
+				$(val).value = $(val).value.split(',').filter(function(j) { return j != did; }).join(',');
+				$(oid).value = $(oid).value.split(',').filter(function(j) { return j != did; }).join(',');
+				li.dispose();
+			}).inject(el, 'after');
 		});
 		list.fireEvent("complete"); // Initial sorting
 	},
