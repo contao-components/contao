@@ -1357,17 +1357,24 @@ var Backend =
 			}
 			$(oid).value = els.join(',');
 		});
-		$(id).getElements('.gimage.removable').each(function(el) {
-			new Element('button', {
-				html: '&times;',
-				'class': 'tl_red'
-			}).addEvent('click', function() {
-				var li = el.getParent('li'),
-					did = li.get('data-id');
-				$(val).value = $(val).value.split(',').filter(function(j) { return j != did; }).join(',');
-				$(oid).value = $(oid).value.split(',').filter(function(j) { return j != did; }).join(',');
-				li.dispose();
-			}).inject(el, 'after');
+		$(id).getElements('.gimage').each(function(el) {
+			if (el.hasClass('removable')) {
+				new Element('button', {
+					html: '&times;',
+					'class': 'tl_red'
+				}).addEvent('click', function() {
+					var li = el.getParent('li'),
+						did = li.get('data-id');
+					$(val).value = $(val).value.split(',').filter(function(j) { return j != did; }).join(',');
+					$(oid).value = $(oid).value.split(',').filter(function(j) { return j != did; }).join(',');
+					li.dispose();
+				}).inject(el, 'after');
+			} else {
+				new Element('button', {
+					html: '&times',
+					disabled: true
+				}).inject(el, 'after');
+			}
 		});
 		list.fireEvent("complete"); // Initial sorting
 	},
