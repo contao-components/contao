@@ -970,7 +970,7 @@ var Backend =
 			file = '/page';
 		}
 		if (isLink) {
-			url = url.replace(/^\{\{link_url::([0-9]+)\}\}$/, '$1');
+			url = url.replace(/^\{\{link_url::([0-9]+)}}$/, '$1');
 		}
 		var M = new SimpleModal({
 			'width': 768,
@@ -1124,7 +1124,7 @@ var Backend =
 			if (items[i].type.toLowerCase() != 'checkbox') {
 				continue;
 			}
-			if (id && items[i].id.substr(0, id.length) != id) {
+			if (id !== undefined && items[i].id.substr(0, id.length) != id) {
 				continue;
 			}
 			items[i].checked = status;
@@ -1628,7 +1628,7 @@ var Backend =
 			for (j=0; j<childs.length; j++) {
 				if (textarea = childs[j].getFirst('textarea')) {
 					textarea.set('tabindex', tabindex++);
-					textarea.name = textarea.name.replace(/\[[0-9]+\][[0-9]+\]/g, '[' + i + '][' + j + ']')
+					textarea.name = textarea.name.replace(/\[[0-9]+][[0-9]+]/g, '[' + i + '][' + j + ']')
 				}
 			}
 		}
@@ -1641,7 +1641,7 @@ var Backend =
 	 */
 	tableWizardResize: function(factor) {
 		var size = Cookie.read('BE_CELL_SIZE');
-		if (size === null && factor === null) return;
+		if (size === null && factor === undefined) return;
 
 		if (factor !== null) {
 			size = '';
@@ -1726,11 +1726,11 @@ var Backend =
 					a.set('tabindex', tabindex++);
 				}
 				if (select = childs[j].getFirst('select')) {
-					select.name = select.name.replace(/\[[0-9]+\]/g, '[' + i + ']');
+					select.name = select.name.replace(/\[[0-9]+]/g, '[' + i + ']');
 				}
 				if (input = childs[j].getFirst('input[type="checkbox"]')) {
 					input.set('tabindex', tabindex++);
-					input.name = input.name.replace(/\[[0-9]+\]/g, '[' + i + ']');
+					input.name = input.name.replace(/\[[0-9]+]/g, '[' + i + ']');
 				}
 			}
 		}
@@ -1802,9 +1802,9 @@ var Backend =
 			for (j=0; j<childs.length; j++) {
 				if (input = childs[j].getFirst('input')) {
 					input.set('tabindex', tabindex++);
-					input.name = input.name.replace(/\[[0-9]+\]/g, '[' + i + ']');
+					input.name = input.name.replace(/\[[0-9]+]/g, '[' + i + ']');
 					if (input.type == 'checkbox') {
-						input.id = input.name.replace(/\[[0-9]+\]/g, '').replace(/\[/g, '_').replace(/\]/g, '') + '_' + i;
+						input.id = input.name.replace(/\[[0-9]+]/g, '').replace(/\[/g, '_').replace(/]/g, '') + '_' + i;
 						input.getNext('label').set('for', input.id);
 					}
 				}
@@ -1875,7 +1875,7 @@ var Backend =
 			for (j=0; j<childs.length; j++) {
 				if (input = childs[j].getFirst('input')) {
 					input.set('tabindex', tabindex++);
-					input.name = input.name.replace(/\[[0-9]+\]/g, '[' + i + ']')
+					input.name = input.name.replace(/\[[0-9]+]/g, '[' + i + ']')
 				}
 			}
 		}
@@ -1945,7 +1945,7 @@ var Backend =
 		// Update the name, label and ID attributes
 		li.getElements('input').each(function(inp) {
 			inp.value = '';
-			inp.name = inp.name.replace(/\[[a-z]{2}(_[A-Z]{2})?\]/, '['+opt.value+']');
+			inp.name = inp.name.replace(/\[[a-z]{2}(_[A-Z]{2})?]/, '['+opt.value+']');
 			var lbl = inp.getPrevious('label'),
 				i = parseInt(lbl.get('for').replace(/ctrl_[^_]+_/, ''));
 			lbl.set('for', lbl.get('for').replace(i, i+1));
