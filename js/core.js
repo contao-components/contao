@@ -768,7 +768,7 @@ var Backend =
 {
 	/**
 	 * The current ID
-	 * @member {string}
+	 * @member {(string|null)}
 	 */
 	currentId: null,
 
@@ -1051,13 +1051,10 @@ var Backend =
 	 * Limit the height of the preview pane
 	 */
 	limitPreviewHeight: function() {
-		var size = null,
-			toggler = null,
-			style = '',
-			hgt = 0;
+		var hgt = 0;
 
 		$$('div.limit_height').each(function(div) {
-			size = div.getCoordinates();
+			var toggler, size, style;
 
 			if (hgt === 0) {
 				hgt = div.className.replace(/[^0-9]*/, '').toInt();
@@ -1081,6 +1078,8 @@ var Backend =
 				offset: {x:0, y:30}
 			});
 
+			size = div.getCoordinates();
+
 			// Disable the function if the preview height is below the max-height
 			if (size.height < hgt) {
 				toggler.src = Backend.themePath + 'expand_.gif';
@@ -1092,17 +1091,17 @@ var Backend =
 			toggler.setStyle('cursor', 'pointer');
 
 			toggler.addEvent('click', function() {
-				style = this.getPrevious('div').getStyle('height').toInt();
-				this.getPrevious('div').setStyle('height', ((style > hgt) ? hgt : ''));
+				style = toggler.getPrevious('div').getStyle('height').toInt();
+				toggler.getPrevious('div').setStyle('height', ((style > hgt) ? hgt : ''));
 
-				if (this.get('data-state') == 0) {
-					this.src = Backend.themePath + 'collapse.gif';
-					this.set('data-state', 1);
-					this.store('tip:title', Contao.lang.collapse);
+				if (toggler.get('data-state') == 0) {
+					toggler.src = Backend.themePath + 'collapse.gif';
+					toggler.set('data-state', 1);
+					toggler.store('tip:title', Contao.lang.collapse);
 				} else {
-					this.src = Backend.themePath + 'expand.gif';
-					this.set('data-state', 0);
-					this.store('tip:title', Contao.lang.expand);
+					toggler.src = Backend.themePath + 'expand.gif';
+					toggler.set('data-state', 0);
+					toggler.store('tip:title', Contao.lang.expand);
 				}
 			});
 
@@ -1113,8 +1112,8 @@ var Backend =
 	/**
 	 * Toggle checkboxes
 	 *
-	 * @param {object} el The DOM element
-	 * @param {string} id The ID of the target element
+	 * @param {object} el   The DOM element
+	 * @param {string} [id] The ID of the target element
 	 */
 	toggleCheckboxes: function(el, id) {
 		var items = $$('input'),
@@ -1124,7 +1123,7 @@ var Backend =
 			if (items[i].type.toLowerCase() != 'checkbox') {
 				continue;
 			}
-			if (id !== undefined && items[i].id.substr(0, id.length) != id) {
+			if (id !== undefined && id != items[i].id.substr(0, id.length)) {
 				continue;
 			}
 			items[i].checked = status;
@@ -1637,13 +1636,12 @@ var Backend =
 	/**
 	 * Resize the table wizard fields on focus
 	 *
-	 * @param {float} factor The resize factor
+	 * @param {float} [factor] The resize factor
 	 */
 	tableWizardResize: function(factor) {
 		var size = Cookie.read('BE_CELL_SIZE');
-		if (size === null && factor === undefined) return;
 
-		if (factor !== null) {
+		if (factor !== undefined) {
 			size = '';
 			$$('.tl_tablewizard textarea').each(function(el) {
 				el.setStyle('width', (el.getStyle('width').toInt() * factor).round().limit(142, 284));
