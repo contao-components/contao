@@ -819,7 +819,7 @@ var Backend =
 		el.blur();
 		width = Browser.ie ? (width + 40) : (width + 17);
 		height = Browser.ie ? (height + 30) : (height + 17);
-		Backend.popupWindow = window.open(el.href, '', 'width='+width+',height='+height+',modal=yes,left=100,top=50,location=no,menubar=no,resizable=yes,scrollbars=yes,status=no,toolbar=no');
+		Backend.popupWindow = window.open(el.href, '', 'width=' + width + ',height=' + height + ',modal=yes,left=100,top=50,location=no,menubar=no,resizable=yes,scrollbars=yes,status=no,toolbar=no');
 	},
 
 	/**
@@ -928,7 +928,7 @@ var Backend =
 				if (frm.document.location.href.indexOf('contao/page?') != -1) {
 					$(opt.tag).value = '{{link_url::' + $(opt.tag).value + '}}';
 				}
-				opt.self.set('href', opt.self.get('href').replace(/&value=[^&]*/, '&value='+val.join(',')));
+				opt.self.set('href', opt.self.get('href').replace(/&value=[^&]*/, '&value=' + val.join(',')));
 			} else {
 				field = $('ctrl_' + opt.id);
 				field.value = val.join("\t");
@@ -938,7 +938,7 @@ var Backend =
 					evalScripts: false,
 					onRequest: AjaxRequest.displayBox(Contao.lang.loading + ' …'),
 					onSuccess: function(txt, json) {
-						$('ctrl_'+opt.id).getParent('div').set('html', json.content);
+						$('ctrl_' + opt.id).getParent('div').set('html', json.content);
 						json.javascript && Browser.exec(json.javascript);
 						AjaxRequest.hideBox();
 						window.fireEvent('ajax_change');
@@ -1943,7 +1943,7 @@ var Backend =
 		// Update the name, label and ID attributes
 		li.getElements('input').each(function(inp) {
 			inp.value = '';
-			inp.name = inp.name.replace(/\[[a-z]{2}(_[A-Z]{2})?]/, '['+opt.value+']');
+			inp.name = inp.name.replace(/\[[a-z]{2}(_[A-Z]{2})?]/, '[' + opt.value + ']');
 			var lbl = inp.getPrevious('label'),
 				i = parseInt(lbl.get('for').replace(/ctrl_[^_]+_/, ''));
 			lbl.set('for', lbl.get('for').replace(i, i+1));
