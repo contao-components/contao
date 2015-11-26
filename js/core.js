@@ -182,20 +182,17 @@ var AjaxRequest =
 		el.blur();
 
 		var item = $(id),
-			image = $(el).getFirst('img'),
-			icon = $(el).getNext('img');
+			image = $(el).getFirst('img');
 
 		if (item) {
 			if (item.getStyle('display') == 'none') {
 				item.setStyle('display', 'inline');
 				image.src = AjaxRequest.themePath + 'folMinus.gif';
-				icon.src = AjaxRequest.themePath + 'folderO.gif';
 				$(el).store('tip:title', Contao.lang.collapse);
 				new Request.Contao({field:el}).post({'action':'toggleFileManager', 'id':id, 'state':1, 'REQUEST_TOKEN':Contao.request_token});
 			} else {
 				item.setStyle('display', 'none');
 				image.src = AjaxRequest.themePath + 'folPlus.gif';
-				icon.src = AjaxRequest.themePath + 'folderC.gif';
 				$(el).store('tip:title', Contao.lang.expand);
 				new Request.Contao({field:el}).post({'action':'toggleFileManager', 'id':id, 'state':0, 'REQUEST_TOKEN':Contao.request_token});
 			}
@@ -229,7 +226,6 @@ var AjaxRequest =
 
 				$(el).store('tip:title', Contao.lang.collapse);
 				image.src = AjaxRequest.themePath + 'folMinus.gif';
-				icon.src = AjaxRequest.themePath + 'folderO.gif';
 				AjaxRequest.hideBox();
 
 				// HOOK
@@ -772,7 +768,7 @@ var Backend =
 {
 	/**
 	 * The current ID
-	 * @member {string}
+	 * @member {(string|null)}
 	 */
 	currentId: null,
 
@@ -823,7 +819,7 @@ var Backend =
 		el.blur();
 		width = Browser.ie ? (width + 40) : (width + 17);
 		height = Browser.ie ? (height + 30) : (height + 17);
-		Backend.popupWindow = window.open(el.href, '', 'width='+width+',height='+height+',modal=yes,left=100,top=50,location=no,menubar=no,resizable=yes,scrollbars=yes,status=no,toolbar=no');
+		Backend.popupWindow = window.open(el.href, '', 'width=' + width + ',height=' + height + ',modal=yes,left=100,top=50,location=no,menubar=no,resizable=yes,scrollbars=yes,status=no,toolbar=no');
 	},
 
 	/**
@@ -932,7 +928,7 @@ var Backend =
 				if (frm.document.location.href.indexOf('contao/page?') != -1) {
 					$(opt.tag).value = '{{link_url::' + $(opt.tag).value + '}}';
 				}
-				opt.self.set('href', opt.self.get('href').replace(/&value=[^&]*/, '&value='+val.join(',')));
+				opt.self.set('href', opt.self.get('href').replace(/&value=[^&]*/, '&value=' + val.join(',')));
 			} else {
 				field = $('ctrl_' + opt.id);
 				field.value = val.join("\t");
@@ -942,7 +938,7 @@ var Backend =
 					evalScripts: false,
 					onRequest: AjaxRequest.displayBox(Contao.lang.loading + ' …'),
 					onSuccess: function(txt, json) {
-						$('ctrl_'+opt.id).getParent('div').set('html', json.content);
+						$('ctrl_' + opt.id).getParent('div').set('html', json.content);
 						json.javascript && Browser.exec(json.javascript);
 						AjaxRequest.hideBox();
 						window.fireEvent('ajax_change');
@@ -974,7 +970,7 @@ var Backend =
 			file = '/page';
 		}
 		if (isLink) {
-			url = url.replace(/^\{\{link_url::([0-9]+)\}\}$/, '$1');
+			url = url.replace(/^\{\{link_url::([0-9]+)}}$/, '$1');
 		}
 		var M = new SimpleModal({
 			'width': 768,
@@ -1055,13 +1051,10 @@ var Backend =
 	 * Limit the height of the preview pane
 	 */
 	limitPreviewHeight: function() {
-		var size = null,
-			toggler = null,
-			style = '',
-			hgt = 0;
+		var hgt = 0;
 
 		$$('div.limit_height').each(function(div) {
-			size = div.getCoordinates();
+			var toggler, size, style;
 
 			if (hgt === 0) {
 				hgt = div.className.replace(/[^0-9]*/, '').toInt();
@@ -1085,6 +1078,8 @@ var Backend =
 				offset: {x:0, y:30}
 			});
 
+			size = div.getCoordinates();
+
 			// Disable the function if the preview height is below the max-height
 			if (size.height < hgt) {
 				toggler.src = Backend.themePath + 'expand_.gif';
@@ -1096,17 +1091,17 @@ var Backend =
 			toggler.setStyle('cursor', 'pointer');
 
 			toggler.addEvent('click', function() {
-				style = this.getPrevious('div').getStyle('height').toInt();
-				this.getPrevious('div').setStyle('height', ((style > hgt) ? hgt : ''));
+				style = toggler.getPrevious('div').getStyle('height').toInt();
+				toggler.getPrevious('div').setStyle('height', ((style > hgt) ? hgt : ''));
 
-				if (this.get('data-state') == 0) {
-					this.src = Backend.themePath + 'collapse.gif';
-					this.set('data-state', 1);
-					this.store('tip:title', Contao.lang.collapse);
+				if (toggler.get('data-state') == 0) {
+					toggler.src = Backend.themePath + 'collapse.gif';
+					toggler.set('data-state', 1);
+					toggler.store('tip:title', Contao.lang.collapse);
 				} else {
-					this.src = Backend.themePath + 'expand.gif';
-					this.set('data-state', 0);
-					this.store('tip:title', Contao.lang.expand);
+					toggler.src = Backend.themePath + 'expand.gif';
+					toggler.set('data-state', 0);
+					toggler.store('tip:title', Contao.lang.expand);
 				}
 			});
 
@@ -1117,8 +1112,8 @@ var Backend =
 	/**
 	 * Toggle checkboxes
 	 *
-	 * @param {object} el The DOM element
-	 * @param {string} id The ID of the target element
+	 * @param {object} el   The DOM element
+	 * @param {string} [id] The ID of the target element
 	 */
 	toggleCheckboxes: function(el, id) {
 		var items = $$('input'),
@@ -1128,7 +1123,7 @@ var Backend =
 			if (items[i].type.toLowerCase() != 'checkbox') {
 				continue;
 			}
-			if (id && items[i].id.substr(0, id.length) != id) {
+			if (id !== undefined && id != items[i].id.substr(0, id.length)) {
 				continue;
 			}
 			items[i].checked = status;
@@ -1341,9 +1336,10 @@ var Backend =
 	 * Make multiSRC items sortable
 	 *
 	 * @param {string} id  The ID of the target element
-	 * @param {string} oid The DOM element
+	 * @param {string} oid The order field
+	 * @param {string} val The value field
 	 */
-	makeMultiSrcSortable: function(id, oid) {
+	makeMultiSrcSortable: function(id, oid, val) {
 		var list = new Sortables($(id), {
 			constrain: true,
 			opacity: 0.6
@@ -1355,6 +1351,25 @@ var Backend =
 				els.push(lis[i].get('data-id'));
 			}
 			$(oid).value = els.join(',');
+		});
+		$(id).getElements('.gimage').each(function(el) {
+			if (el.hasClass('removable')) {
+				new Element('button', {
+					html: '&times;',
+					'class': 'tl_red'
+				}).addEvent('click', function() {
+					var li = el.getParent('li'),
+						did = li.get('data-id');
+					$(val).value = $(val).value.split(',').filter(function(j) { return j != did; }).join(',');
+					$(oid).value = $(oid).value.split(',').filter(function(j) { return j != did; }).join(',');
+					li.dispose();
+				}).inject(el, 'after');
+			} else {
+				new Element('button', {
+					html: '&times',
+					disabled: true
+				}).inject(el, 'after');
+			}
 		});
 		list.fireEvent("complete"); // Initial sorting
 	},
@@ -1612,7 +1627,7 @@ var Backend =
 			for (j=0; j<childs.length; j++) {
 				if (textarea = childs[j].getFirst('textarea')) {
 					textarea.set('tabindex', tabindex++);
-					textarea.name = textarea.name.replace(/\[[0-9]+\][[0-9]+\]/g, '[' + i + '][' + j + ']')
+					textarea.name = textarea.name.replace(/\[[0-9]+][[0-9]+]/g, '[' + i + '][' + j + ']')
 				}
 			}
 		}
@@ -1621,13 +1636,12 @@ var Backend =
 	/**
 	 * Resize the table wizard fields on focus
 	 *
-	 * @param {float} factor The resize factor
+	 * @param {float} [factor] The resize factor
 	 */
 	tableWizardResize: function(factor) {
 		var size = Cookie.read('BE_CELL_SIZE');
-		if (size === null && factor === null) return;
 
-		if (factor !== null) {
+		if (factor !== undefined) {
 			size = '';
 			$$('.tl_tablewizard textarea').each(function(el) {
 				el.setStyle('width', (el.getStyle('width').toInt() * factor).round().limit(142, 284));
@@ -1710,11 +1724,11 @@ var Backend =
 					a.set('tabindex', tabindex++);
 				}
 				if (select = childs[j].getFirst('select')) {
-					select.name = select.name.replace(/\[[0-9]+\]/g, '[' + i + ']');
+					select.name = select.name.replace(/\[[0-9]+]/g, '[' + i + ']');
 				}
 				if (input = childs[j].getFirst('input[type="checkbox"]')) {
 					input.set('tabindex', tabindex++);
-					input.name = input.name.replace(/\[[0-9]+\]/g, '[' + i + ']');
+					input.name = input.name.replace(/\[[0-9]+]/g, '[' + i + ']');
 				}
 			}
 		}
@@ -1786,9 +1800,9 @@ var Backend =
 			for (j=0; j<childs.length; j++) {
 				if (input = childs[j].getFirst('input')) {
 					input.set('tabindex', tabindex++);
-					input.name = input.name.replace(/\[[0-9]+\]/g, '[' + i + ']');
+					input.name = input.name.replace(/\[[0-9]+]/g, '[' + i + ']');
 					if (input.type == 'checkbox') {
-						input.id = input.name.replace(/\[[0-9]+\]/g, '').replace(/\[/g, '_').replace(/\]/g, '') + '_' + i;
+						input.id = input.name.replace(/\[[0-9]+]/g, '').replace(/\[/g, '_').replace(/]/g, '') + '_' + i;
 						input.getNext('label').set('for', input.id);
 					}
 				}
@@ -1859,7 +1873,7 @@ var Backend =
 			for (j=0; j<childs.length; j++) {
 				if (input = childs[j].getFirst('input')) {
 					input.set('tabindex', tabindex++);
-					input.name = input.name.replace(/\[[0-9]+\]/g, '[' + i + ']')
+					input.name = input.name.replace(/\[[0-9]+]/g, '[' + i + ']')
 				}
 			}
 		}
@@ -1929,7 +1943,7 @@ var Backend =
 		// Update the name, label and ID attributes
 		li.getElements('input').each(function(inp) {
 			inp.value = '';
-			inp.name = inp.name.replace(/\[[a-z]{2}(_[A-Z]{2})?\]/, '['+opt.value+']');
+			inp.name = inp.name.replace(/\[[a-z]{2}(_[A-Z]{2})?]/, '[' + opt.value + ']');
 			var lbl = inp.getPrevious('label'),
 				i = parseInt(lbl.get('for').replace(/ctrl_[^_]+_/, ''));
 			lbl.set('for', lbl.get('for').replace(i, i+1));
