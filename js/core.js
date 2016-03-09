@@ -92,12 +92,12 @@ var AjaxRequest =
 		if (item) {
 			if (item.getStyle('display') == 'none') {
 				item.setStyle('display', 'inline');
-				image.src = AjaxRequest.themePath + 'images/folMinus.gif';
+				image.src = AjaxRequest.themePath + 'icons/folMinus.svg';
 				$(el).store('tip:title', Contao.lang.collapse);
 				new Request.Contao({field:el}).post({'action':'toggleStructure', 'id':id, 'state':1, 'REQUEST_TOKEN':Contao.request_token});
 			} else {
 				item.setStyle('display', 'none');
-				image.src = AjaxRequest.themePath + 'images/folPlus.gif';
+				image.src = AjaxRequest.themePath + 'icons/folPlus.svg';
 				$(el).store('tip:title', Contao.lang.expand);
 				new Request.Contao({field:el}).post({'action':'toggleStructure', 'id':id, 'state':0, 'REQUEST_TOKEN':Contao.request_token});
 			}
@@ -150,7 +150,7 @@ var AjaxRequest =
 				});
 
 				$(el).store('tip:title', Contao.lang.collapse);
-				image.src = AjaxRequest.themePath + 'images/folMinus.gif';
+				image.src = AjaxRequest.themePath + 'icons/folMinus.svg';
 				window.fireEvent('structure');
 				AjaxRequest.hideBox();
 
@@ -181,12 +181,12 @@ var AjaxRequest =
 		if (item) {
 			if (item.getStyle('display') == 'none') {
 				item.setStyle('display', 'inline');
-				image.src = AjaxRequest.themePath + 'images/folMinus.gif';
+				image.src = AjaxRequest.themePath + 'icons/folMinus.svg';
 				$(el).store('tip:title', Contao.lang.collapse);
 				new Request.Contao({field:el}).post({'action':'toggleFileManager', 'id':id, 'state':1, 'REQUEST_TOKEN':Contao.request_token});
 			} else {
 				item.setStyle('display', 'none');
-				image.src = AjaxRequest.themePath + 'images/folPlus.gif';
+				image.src = AjaxRequest.themePath + 'icons/folPlus.svg';
 				$(el).store('tip:title', Contao.lang.expand);
 				new Request.Contao({field:el}).post({'action':'toggleFileManager', 'id':id, 'state':0, 'REQUEST_TOKEN':Contao.request_token});
 			}
@@ -219,7 +219,7 @@ var AjaxRequest =
 				});
 
 				$(el).store('tip:title', Contao.lang.collapse);
-				image.src = AjaxRequest.themePath + 'images/folMinus.gif';
+				image.src = AjaxRequest.themePath + 'icons/folMinus.svg';
 				AjaxRequest.hideBox();
 
 				// HOOK
@@ -251,12 +251,12 @@ var AjaxRequest =
 		if (item) {
 			if (item.getStyle('display') == 'none') {
 				item.setStyle('display', 'inline');
-				image.src = AjaxRequest.themePath + 'images/folMinus.gif';
+				image.src = AjaxRequest.themePath + 'icons/folMinus.svg';
 				$(el).store('tip:title', Contao.lang.collapse);
 				new Request.Contao({field:el}).post({'action':'togglePagetree', 'id':id, 'state':1, 'REQUEST_TOKEN':Contao.request_token});
 			} else {
 				item.setStyle('display', 'none');
-				image.src = AjaxRequest.themePath + 'images/folPlus.gif';
+				image.src = AjaxRequest.themePath + 'icons/folPlus.svg';
 				$(el).store('tip:title', Contao.lang.expand);
 				new Request.Contao({field:el}).post({'action':'togglePagetree', 'id':id, 'state':0, 'REQUEST_TOKEN':Contao.request_token});
 			}
@@ -289,7 +289,7 @@ var AjaxRequest =
 				});
 
 				$(el).store('tip:title', Contao.lang.collapse);
-				image.src = AjaxRequest.themePath + 'images/folMinus.gif';
+				image.src = AjaxRequest.themePath + 'icons/folMinus.svg';
 				AjaxRequest.hideBox();
 
 				// HOOK
@@ -322,12 +322,12 @@ var AjaxRequest =
 		if (item) {
 			if (item.getStyle('display') == 'none') {
 				item.setStyle('display', 'inline');
-				image.src = AjaxRequest.themePath + 'images/folMinus.gif';
+				image.src = AjaxRequest.themePath + 'icons/folMinus.svg';
 				$(el).store('tip:title', Contao.lang.collapse);
 				new Request.Contao({field:el}).post({'action':'toggleFiletree', 'id':id, 'state':1, 'REQUEST_TOKEN':Contao.request_token});
 			} else {
 				item.setStyle('display', 'none');
-				image.src = AjaxRequest.themePath + 'images/folPlus.gif';
+				image.src = AjaxRequest.themePath + 'icons/folPlus.svg';
 				$(el).store('tip:title', Contao.lang.expand);
 				new Request.Contao({field:el}).post({'action':'toggleFiletree', 'id':id, 'state':0, 'REQUEST_TOKEN':Contao.request_token});
 			}
@@ -360,7 +360,7 @@ var AjaxRequest =
 				});
 
 				$(el).store('tip:title', Contao.lang.collapse);
-				image.src = AjaxRequest.themePath + 'images/folMinus.gif';
+				image.src = AjaxRequest.themePath + 'icons/folMinus.svg';
 				AjaxRequest.hideBox();
 
 				// HOOK
@@ -511,10 +511,10 @@ var AjaxRequest =
 
 					// Prepend the theme path
 					if (icon.indexOf('/') == -1) {
-						icon = AjaxRequest.themePath + icon;
+						icon = AjaxRequest.themePath + (icon.match(/\.svg$/) ? 'icons/' : 'images/') + icon;
 					}
 					if (icond.indexOf('/') == -1) {
-						icond = AjaxRequest.themePath + icond;
+						icond = AjaxRequest.themePath + (icond.match(/\.svg$/) ? 'icons/' : 'images/') + icond;
 					}
 
 					img.src = !published ? icon : icond;
@@ -546,10 +546,10 @@ var AjaxRequest =
 
 					// Prepend the theme path
 					if (icon.indexOf('/') == -1) {
-						icon = AjaxRequest.themePath + icon;
+						icon = AjaxRequest.themePath + (icon.match(/\.svg$/) ? 'icons/' : 'images/') + icon;
 					}
 					if (icond.indexOf('/') == -1) {
-						icond = AjaxRequest.themePath + icond;
+						icond = AjaxRequest.themePath + (icond.match(/\.svg$/) ? 'icons/' : 'images/') + icond;
 					}
 
 					img.src = !published ? icon : icond;
@@ -599,11 +599,11 @@ var AjaxRequest =
 
 		// Send request
 		if (!published) {
-			image.src = AjaxRequest.themePath + 'images/visible.gif';
+			image.src = AjaxRequest.themePath + 'icons/visible.svg';
 			image.set('data-state', 1);
 			new Request.Contao({'url':window.location.href, 'followRedirects':false}).get({'tid':id, 'state':1, 'rt':Contao.request_token});
 		} else {
-			image.src = AjaxRequest.themePath + 'images/invisible.gif';
+			image.src = AjaxRequest.themePath + 'icons/invisible.svg';
 			image.set('data-state', 0);
 			new Request.Contao({'url':window.location.href, 'followRedirects':false}).get({'tid':id, 'state':0, 'rt':Contao.request_token});
 		}
@@ -633,11 +633,11 @@ var AjaxRequest =
 
 		// Send the request
 		if (!featured) {
-			image.src = AjaxRequest.themePath + 'images/featured.gif';
+			image.src = AjaxRequest.themePath + 'icons/featured.svg';
 			image.set('data-state', 1);
 			new Request.Contao().post({'action':'toggleFeatured', 'id':id, 'state':1, 'REQUEST_TOKEN':Contao.request_token});
 		} else {
-			image.src = AjaxRequest.themePath + 'images/featured_.gif';
+			image.src = AjaxRequest.themePath + 'icons/featured_.svg';
 			image.set('data-state', 0);
 			new Request.Contao().post({'action':'toggleFeatured', 'id':id, 'state':0, 'REQUEST_TOKEN':Contao.request_token});
 		}
@@ -686,11 +686,11 @@ var AjaxRequest =
 		if (item) {
 			if (item.getStyle('display') != 'block') {
 				item.setStyle('display', 'block');
-				image.src = AjaxRequest.themePath + 'images/folMinus.gif';
+				image.src = AjaxRequest.themePath + 'icons/folMinus.svg';
 				new Request.Contao().post({'action':'toggleCheckboxGroup', 'id':id, 'state':1, 'REQUEST_TOKEN':Contao.request_token});
 			} else {
 				item.setStyle('display', 'none');
-				image.src = AjaxRequest.themePath + 'images/folPlus.gif';
+				image.src = AjaxRequest.themePath + 'icons/folPlus.svg';
 				new Request.Contao().post({'action':'toggleCheckboxGroup', 'id':id, 'state':0, 'REQUEST_TOKEN':Contao.request_token});
 			}
 			return true;
@@ -1100,12 +1100,12 @@ var Backend =
 
 			// Disable the function if the preview height is below the max-height
 			if (size.height <= hgt) {
-				toggler.src = Backend.themePath + 'images/expand_.gif';
+				toggler.src = Backend.themePath + 'icons/expand_.svg';
 				toggler.inject(div, 'after');
 				return;
 			}
 
-			toggler.src = Backend.themePath + 'images/expand.gif';
+			toggler.src = Backend.themePath + 'icons/expand.svg';
 			toggler.setStyle('cursor', 'pointer');
 
 			toggler.addEvent('click', function() {
@@ -1113,11 +1113,11 @@ var Backend =
 				toggler.getPrevious('div').setStyle('height', ((style > hgt) ? hgt : ''));
 
 				if (toggler.get('data-state') == 0) {
-					toggler.src = Backend.themePath + 'images/collapse.gif';
+					toggler.src = Backend.themePath + 'icons/collapse.svg';
 					toggler.set('data-state', 1);
 					toggler.store('tip:title', Contao.lang.collapse);
 				} else {
-					toggler.src = Backend.themePath + 'images/expand.gif';
+					toggler.src = Backend.themePath + 'icons/expand.svg';
 					toggler.set('data-state', 0);
 					toggler.store('tip:title', Contao.lang.expand);
 				}
@@ -2050,10 +2050,10 @@ var Backend =
 
 				if (cbx.checked) {
 					cbx.checked = '';
-					el.src = Backend.themePath + 'images/invisible.gif';
+					el.src = Backend.themePath + 'icons/invisible.svg';
 				} else {
 					cbx.checked = 'checked';
-					el.src = Backend.themePath + 'images/visible.gif';
+					el.src = Backend.themePath + 'icons/visible.svg';
 				}
 			});
 		});
