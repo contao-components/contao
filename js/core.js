@@ -1269,6 +1269,16 @@ var Backend =
 				offset: {x:0, y:((el.get('class') == 'gimage') ? 60 : 30)}
 			});
 		});
+
+		// Time tags
+		$$('time[datetime]').filter(function(i) {
+			return i.datetime != '';
+		}).each(function(el) {
+			new Tips.Contao(el, {
+				title: 'datetime',
+				offset: {x:0, y:26}
+			});
+		});
 	},
 
 	/**
