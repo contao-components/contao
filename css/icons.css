@@ -8,7 +8,7 @@
 
 .download-element {
 	padding:3px 6px 3px 22px;
-	background:url("../images/iconPLAIN.gif") left center no-repeat;
+	background:url("../images/iconPLAIN.svg") left center no-repeat;
 }
 
 ul.enclosure {
@@ -21,15 +21,15 @@ li.download-element {
 
 .ext-m4a, .ext-mp3, .ext-wma, .ext-mpeg, .ext-wav, .ext-ogg, .ext-mid,
 .ext-midi, .ext-aif, .ext-aiff, .ext-aifc, .ext-ram, .ext-rm, .ext-rpm {
-	background-image:url("../images/iconAUDIO.gif");
+	background-image:url("../images/iconAUDIO.svg");
 }
 
 .ext-bmp {
-	background-image:url("../images/iconBMP.gif");
+	background-image:url("../images/iconBMP.svg");
 }
 
 .ext-css, .ext-scss, .ext-less {
-	background-image:url("../images/iconCSS.gif");
+	background-image:url("../images/iconCSS.svg");
 }
 
 .ext-cto {
@@ -37,11 +37,11 @@ li.download-element {
 }
 
 .ext-gif {
-	background-image:url("../images/iconGIF.gif");
+	background-image:url("../images/iconGIF.svg");
 }
 
 .ext-html, .ext-htm, .ext-shtml {
-	background-image:url("../images/iconHTML.gif");
+	background-image:url("../images/iconHTML.svg");
 }
 
 .ext-jpg, .ext-jpeg, .ext-jpe {
@@ -62,7 +62,7 @@ li.download-element {
 }
 
 .ext-inc, .ext-php, .ext-php3, .ext-php4, .ext-php5, .ext-phtml, .ext-phps {
-	background-image:url("../images/iconPHP.gif");
+	background-image:url("../images/iconPHP.svg");
 }
 
 .ext-dmg, .ext-gtar, .ext-rar, .ext-sit, .ext-tar, .ext-taz, .ext-zip {
@@ -70,7 +70,7 @@ li.download-element {
 }
 
 .ext-fla, .ext-swf {
-	background-image:url("../images/iconSWF.gif");
+	background-image:url("../images/iconSWF.svg");
 }
 
 .ext-png, .ext-tiff, .ext-tif {
