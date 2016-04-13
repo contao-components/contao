@@ -33,7 +33,7 @@ li.download-element {
 }
 
 .ext-cto {
-	background-image:url("../images/iconCTO.gif");
+	background-image:url("../images/iconCTO.svg");
 }
 
 .ext-gif {
@@ -45,20 +45,20 @@ li.download-element {
 }
 
 .ext-jpg, .ext-jpeg, .ext-jpe {
-	background-image:url("../images/iconJPG.gif");
+	background-image:url("../images/iconJPG.svg");
 }
 
 .ext-js {
-	background-image:url("../images/iconJS.gif");
+	background-image:url("../images/iconJS.svg");
 }
 
 .ext-xl, .ext-xls, .ext-doc, .ext-word, .ext-pps, .ext-ppt, .ext-odc, .ext-odf,
 .ext-odg, .ext-odi, .ext-odp, .ext-ods, .ext-odt {
-	background-image:url("../images/iconOFFICE.gif");
+	background-image:url("../images/iconOFFICE.svg");
 }
 
 .ext-pdf {
-	background-image:url("../images/iconPDF.gif");
+	background-image:url("../images/iconPDF.svg");
 }
 
 .ext-inc, .ext-php, .ext-php3, .ext-php4, .ext-php5, .ext-phtml, .ext-phps {
@@ -66,7 +66,7 @@ li.download-element {
 }
 
 .ext-dmg, .ext-gtar, .ext-rar, .ext-sit, .ext-tar, .ext-taz, .ext-zip {
-	background-image:url("../images/iconRAR.gif");
+	background-image:url("../images/iconRAR.svg");
 }
 
 .ext-fla, .ext-swf {
@@ -74,10 +74,10 @@ li.download-element {
 }
 
 .ext-png, .ext-tiff, .ext-tif {
-	background-image:url("../images/iconTIF.gif");
+	background-image:url("../images/iconTIF.svg");
 }
 
 .ext-mp4, .ext-m4v, .ext-mov, .ext-wmv, .ext-webm, .ext-qt, .ext-rv, .ext-avi,
 .ext-ogv, .ext-movie {
-	background-image:url("../images/iconVIDEO.gif");
+	background-image:url("../images/iconVIDEO.svg");
 }
