@@ -11,10 +11,5 @@
     ],
     "require": {
         "contao-components/installer": "^1.0.9"
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-develop": "4.3.x-dev"
-        }
     }
 }
