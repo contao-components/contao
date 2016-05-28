@@ -1268,7 +1268,7 @@ var Backend =
 		});
 
 		// Links and input elements
-		['a[title]', 'input[title]'].each(function(el) {
+		['a[title]', 'input[title]', 'button[title]'].each(function(el) {
 			new Tips.Contao($$(el).filter(function(i) {
 				return i.title != '';
 			}), {
