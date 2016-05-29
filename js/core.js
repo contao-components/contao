@@ -1261,18 +1261,27 @@ var Backend =
 	 */
 	addInteractiveHelp: function() {
 		new Tips.Contao('p.tl_tip', {
-			offset: {x:9, y:21},
+			offset: {x:9, y:23},
 			text: function(e) {
 				return e.get('html');
 			}
 		});
 
 		// Links and input elements
-		['a[title]', 'input[title]', 'button[title]'].each(function(el) {
+		['a[title]:not(.navigation)', 'input[title]', 'button[title]'].each(function(el) {
 			new Tips.Contao($$(el).filter(function(i) {
 				return i.title != '';
 			}), {
-				offset: {x:0, y:26}
+				offset: {x:0, y:27}
+			});
+		});
+
+		// Images
+		$$('a[title].navigation').filter(function(i) {
+			return i.title != '';
+		}).each(function(el) {
+			new Tips.Contao(el, {
+				offset: {x:6, y:30}
 			});
 		});
 
