@@ -1268,21 +1268,19 @@ var Backend =
 		});
 
 		// Links and input elements
-		['a[title]:not(.navigation)', 'input[title]', 'button[title]'].each(function(el) {
+		['a[title]:not(.navigation)', 'input[title]', 'button[title]', 'time[title]'].each(function(el) {
 			new Tips.Contao($$(el).filter(function(i) {
 				return i.title != '';
 			}), {
-				offset: {x:0, y:27}
+				offset: {x:0, y:((el == 'time[title]') ? 26 : 30)}
 			});
 		});
 
-		// Images
-		$$('a[title].navigation').filter(function(i) {
+		// Navigation links
+		new Tips.Contao($$('a[title].navigation').filter(function(i) {
 			return i.title != '';
-		}).each(function(el) {
-			new Tips.Contao(el, {
-				offset: {x:6, y:30}
-			});
+		}), {
+			offset: {x:8, y:34}
 		});
 
 		// Images
@@ -1291,16 +1289,6 @@ var Backend =
 		}).each(function(el) {
 			new Tips.Contao(el, {
 				offset: {x:0, y:((el.get('class') == 'gimage') ? 60 : 30)}
-			});
-		});
-
-		// Time tags
-		$$('time[datetime]').filter(function(i) {
-			return i.datetime != '';
-		}).each(function(el) {
-			new Tips.Contao(el, {
-				title: 'datetime',
-				offset: {x:0, y:26}
 			});
 		});
 	},
