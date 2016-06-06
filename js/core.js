@@ -1267,13 +1267,9 @@ var Backend =
 			}
 		});
 
-		// Links and input elements
-		['a[title]:not(.navigation)', 'input[title]', 'button[title]', 'time[title]'].each(function(el) {
-			new Tips.Contao($$(el).filter(function(i) {
-				return i.title != '';
-			}), {
-				offset: {x:0, y:((el == 'time[title]') ? 26 : 30)}
-			});
+		// Home
+		new Tips.Contao($('home'), {
+			offset: {x:15, y:42}
 		});
 
 		// Navigation links
@@ -1289,6 +1285,15 @@ var Backend =
 		}).each(function(el) {
 			new Tips.Contao(el, {
 				offset: {x:0, y:((el.get('class') == 'gimage') ? 60 : 30)}
+			});
+		});
+
+		// Links and input elements
+		['a[title]', 'input[title]', 'button[title]', 'time[title]'].each(function(el) {
+			new Tips.Contao($$(el).filter(function(i) {
+				return i.title != ''
+			}), {
+				offset: {x:0, y:((el == 'time[title]') ? 26 : 30)}
 			});
 		});
 	},
