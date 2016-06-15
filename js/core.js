@@ -91,7 +91,7 @@ var AjaxRequest =
 
 		if (item) {
 			if (item.getStyle('display') == 'none') {
-				item.setStyle('display', 'inline');
+				item.setStyle('display', null);
 				image.src = AjaxRequest.themePath + 'icons/folMinus.svg';
 				$(el).store('tip:title', Contao.lang.collapse);
 				new Request.Contao({field:el}).post({'action':'toggleStructure', 'id':id, 'state':1, 'REQUEST_TOKEN':Contao.request_token});
@@ -180,7 +180,7 @@ var AjaxRequest =
 
 		if (item) {
 			if (item.getStyle('display') == 'none') {
-				item.setStyle('display', 'inline');
+				item.setStyle('display', null);
 				image.src = AjaxRequest.themePath + 'icons/folMinus.svg';
 				$(el).store('tip:title', Contao.lang.collapse);
 				new Request.Contao({field:el}).post({'action':'toggleFileManager', 'id':id, 'state':1, 'REQUEST_TOKEN':Contao.request_token});
@@ -250,7 +250,7 @@ var AjaxRequest =
 
 		if (item) {
 			if (item.getStyle('display') == 'none') {
-				item.setStyle('display', 'inline');
+				item.setStyle('display', null);
 				image.src = AjaxRequest.themePath + 'icons/folMinus.svg';
 				$(el).store('tip:title', Contao.lang.collapse);
 				new Request.Contao({field:el}).post({'action':'togglePagetree', 'id':id, 'state':1, 'REQUEST_TOKEN':Contao.request_token});
@@ -321,7 +321,7 @@ var AjaxRequest =
 
 		if (item) {
 			if (item.getStyle('display') == 'none') {
-				item.setStyle('display', 'inline');
+				item.setStyle('display', null);
 				image.src = AjaxRequest.themePath + 'icons/folMinus.svg';
 				$(el).store('tip:title', Contao.lang.collapse);
 				new Request.Contao({field:el}).post({'action':'toggleFiletree', 'id':id, 'state':1, 'REQUEST_TOKEN':Contao.request_token});
@@ -386,12 +386,18 @@ var AjaxRequest =
 			if (!el.value) {
 				el.value = 1;
 				el.checked = 'checked';
-				item.setStyle('display', 'block');
+				item.setStyle('display', null);
+				item.getElements('[data-required]').each(function(el) {
+					el.set('required', '').set('data-required', null);
+				});
 				new Request.Contao({field:el}).post({'action':'toggleSubpalette', 'id':id, 'field':field, 'state':1, 'REQUEST_TOKEN':Contao.request_token});
 			} else {
 				el.value = '';
 				el.checked = '';
 				item.setStyle('display', 'none');
+				item.getElements('[required]').each(function(el) {
+					el.set('required', null).set('data-required', '');
+				});
 				new Request.Contao({field:el}).post({'action':'toggleSubpalette', 'id':id, 'field':field, 'state':0, 'REQUEST_TOKEN':Contao.request_token});
 			}
 			return;
@@ -414,7 +420,7 @@ var AjaxRequest =
 				if (json.javascript) {
 
 					// Use Asset.javascript() instead of document.write() to load a
-					// JavaScript file and re-execude the code after it has been loaded
+					// JavaScript file and re-execute the code after it has been loaded
 					document.write = function(str) {
 						var src = '';
 						str.replace(/<script src="([^"]+)"/i, function(all, match){
@@ -699,8 +705,8 @@ var AjaxRequest =
 			image = $(el).getFirst('img');
 
 		if (item) {
-			if (item.getStyle('display') != 'block') {
-				item.setStyle('display', 'block');
+			if (item.getStyle('display') == 'none') {
+				item.setStyle('display', null);
 				image.src = AjaxRequest.themePath + 'icons/folMinus.svg';
 				new Request.Contao().post({'action':'toggleCheckboxGroup', 'id':id, 'state':1, 'REQUEST_TOKEN':Contao.request_token});
 			} else {
@@ -2056,11 +2062,11 @@ var Backend =
 		a.href = a.href.replace(/id=[0-9]+/, 'id=' + el.value);
 
 		if (el.value > 0) {
-			td.getElement('a.module_link').setStyle('display', 'inline');
+			td.getElement('a.module_link').setStyle('display', null);
 			td.getElement('img.module_image').setStyle('display', 'none');
 		} else {
 			td.getElement('a.module_link').setStyle('display', 'none');
-			td.getElement('img.module_image').setStyle('display', 'inline');
+			td.getElement('img.module_image').setStyle('display', null);
 		}
 	},
 
@@ -2216,7 +2222,7 @@ var Backend =
 				if (!inputElements.width.get('value').toInt() || !inputElements.height.get('value').toInt()) {
 					partElement.setStyle('display', 'none');
 				} else {
-					partElement.setStyle('display', '');
+					partElement.setStyle('display', null);
 				}
 			},
 			updateValues = function() {
@@ -2233,7 +2239,7 @@ var Backend =
 					values.x = values.y = values.width = values.height = '';
 					partElement.setStyle('display', 'none');
 				} else {
-					partElement.setStyle('display', '');
+					partElement.setStyle('display', null);
 				}
 				Object.each(values, function(value, key) {
 					inputElements[key].set('value', value);
