@@ -1734,8 +1734,8 @@ var Backend =
 				childs = parent.getChildren();
 				for (i=0; i<childs.length; i++) {
 					var next = childs[i].clone(true).inject(tr, 'bottom');
-					if (select = childs[i].getFirst('select')) {
-						next.getFirst('select').value = select.value;
+					if (select = childs[i].getElement('select')) {
+						next.getElement('select').value = select.value;
 					}
 				}
 				tr.inject(parent, 'after');
@@ -1774,7 +1774,7 @@ var Backend =
 				if (a = childs[j].getFirst('a.chzn-single')) {
 					a.set('tabindex', tabindex++);
 				}
-				if (select = childs[j].getFirst('select')) {
+				if (select = childs[j].getElement('select')) {
 					select.name = select.name.replace(/\[[0-9]+]/g, '[' + i + ']');
 				}
 				if (input = childs[j].getFirst('input[type="checkbox"]')) {
