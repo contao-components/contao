@@ -1279,6 +1279,13 @@ var Backend =
 		});
 
 		// Navigation links
+		new Tips.Contao($$('#tmenu a[title]').filter(function(i) {
+			return i.title != '';
+		}), {
+			offset: {x:2, y:42}
+		});
+
+		// Navigation links
 		new Tips.Contao($$('a[title].navigation').filter(function(i) {
 			return i.title != '';
 		}), {
