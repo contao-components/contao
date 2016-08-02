@@ -38,10 +38,12 @@ var AjaxRequest =
 			if (parent.hasClass('node-collapsed')) {
 				item.setStyle('display', null);
 				parent.removeClass('node-collapsed').addClass('node-expanded');
+				$(el).store('tip:title', Contao.lang.collapse);
 				new Request.Contao().post({'action':'toggleNavigation', 'id':id, 'state':1, 'REQUEST_TOKEN':Contao.request_token});
 			} else {
 				item.setStyle('display', 'none');
 				parent.removeClass('node-expanded').addClass('node-collapsed');
+				$(el).store('tip:title', Contao.lang.expand);
 				new Request.Contao().post({'action':'toggleNavigation', 'id':id, 'state':0, 'REQUEST_TOKEN':Contao.request_token});
 			}
 			return false;
@@ -1283,6 +1285,13 @@ var Backend =
 			return i.title != '';
 		}), {
 			offset: {x:2, y:42}
+		});
+
+		// Navigation groups
+		new Tips.Contao($$('a[title][class^="group-"]').filter(function(i) {
+			return i.title != '';
+		}), {
+			offset: {x:8, y:38}
 		});
 
 		// Navigation links
