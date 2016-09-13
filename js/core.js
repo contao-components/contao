@@ -1422,6 +1422,7 @@ var Backend =
 		$(id).getElements('.gimage').each(function(el) {
 			if (el.hasClass('removable')) {
 				new Element('button', {
+					type: 'button',
 					html: '&times;',
 					'class': 'tl_red'
 				}).addEvent('click', function() {
@@ -1433,6 +1434,7 @@ var Backend =
 				}).inject(el, 'after');
 			} else {
 				new Element('button', {
+					type: 'button',
 					html: '&times',
 					disabled: true
 				}).inject(el, 'after');
