@@ -2151,7 +2151,6 @@ var Backend =
 	 */
 	enableToggleSelect: function() {
 		var container = $('tl_select'),
-			checkboxes = [], start, thisIndex, startIndex, status, from, to,
 			shiftToggle = function(el) {
 				thisIndex = checkboxes.indexOf(el);
 				startIndex = checkboxes.indexOf(start);
@@ -2162,16 +2161,9 @@ var Backend =
 				for (from; from<=to; from++) {
 					checkboxes[from].checked = status;
 				}
-			};
-
-		if (container) {
-			checkboxes = container.getElements('input[type="checkbox"]');
-		}
-
-		// Row click
-		$$('.toggle_select').each(function(el) {
-			el.addEvent('click', function(e) {
-				var input = $(el).getElement('input[type="checkbox"],input[type="radio"]');
+			},
+			clickEvent = function(e) {
+				var input = this.getElement('input[type="checkbox"],input[type="radio"]');
 
 				if (!input) {
 					return;
@@ -2182,6 +2174,7 @@ var Backend =
 					if (!input.checked) {
 						input.checked = 'checked';
 					}
+
 					return;
 				}
 
@@ -2197,7 +2190,25 @@ var Backend =
 				}
 
 				start = input;
-			});
+			},
+			checkboxes = [], start, thisIndex, startIndex, status, from, to;
+
+		if (container) {
+			checkboxes = container.getElements('input[type="checkbox"]');
+		}
+
+		// Row click
+		$$('.toggle_select').each(function(el) {
+			var boundEvent = el.retrieve('boundEvent');
+
+			if (boundEvent) {
+				el.removeEvent('click', boundEvent);
+			}
+
+			boundEvent = clickEvent.bind(el);
+
+			el.addEvent('click', boundEvent);
+			el.store('boundEvent', boundEvent);
 		});
 
 		// Checkbox click
@@ -2224,7 +2235,7 @@ var Backend =
 		var inputs = edit
 			.getElements('input, textarea')
 			.filter(function(item) {
-				return !item.get('disabled') && item.isVisible() && item.get('type') !== 'submit' && item.get('type') !== 'image';
+				return !item.get('disabled') && item.isVisible() && item.get('type') !== 'checkbox' && item.get('type') !== 'radio' && item.get('type') !== 'submit' && item.get('type') !== 'image';
 			});
 
 		if (inputs[0]) inputs[0].focus();
