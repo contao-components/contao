@@ -400,6 +400,10 @@ li.download-element {
 	background-image:url("../images/iconHTM.svg");
 }
 
+.ext-md {
+	background-image:url("../images/iconMD.svg");
+}
+
 .ext-shtml {
 	background-image:url("../images/iconSHTML.svg");
 }
