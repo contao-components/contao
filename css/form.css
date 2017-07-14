@@ -88,7 +88,7 @@ input[type="radio"][disabled],input[type="checkbox"][disabled],input[type="radio
 /**
  * Buttons
  */
-button,input[type="submit"],.button {
+form button,form input[type="submit"],form .button {
 	display:inline-block;
 	padding:4px 15px 4px 14px;
 	margin-bottom:0;
@@ -114,11 +114,11 @@ button,input[type="submit"],.button {
 	-o-transition:background .15s linear;
 	transition:background .15s linear;
 }
-button:hover,input[type="submit"]:hover,.button:hover {
+form button:hover,form input[type="submit"]:hover,form .button:hover {
 	text-decoration:none;
 	background-position:0 -15px !important;
 }
-button:active,input[type="submit"]:active,.button:active {
+form button:active,form input[type="submit"]:active,form .button:active {
 	background-color:#e6e6e6;
 	background-position:0 -30px !important;
 }
