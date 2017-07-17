@@ -209,7 +209,7 @@ form .widget > input,form .widget > textarea {
 /**
  * Inline form layout
  */
-form .inline-form .widget {
+.inline-form .widget {
 	display:inline-block;
 	margin-bottom:0;
 	vertical-align:middle;
@@ -218,21 +218,21 @@ form .inline-form .widget {
 /**
  * Horizontal form layout
  */
-form .horizontal-form .widget:after {
+.horizontal-form .widget:after {
 	content:"";
 	display:table;
 	clear:both;
 }
-form .horizontal-form .widget > label {
+.horizontal-form .widget > label {
 	width:20%;
 	float:left;
 	padding:3px 2% 0 0;
 	text-align:right;
 }
-form .horizontal-form .widget > input,form .horizontal-form .widget > textarea {
+.horizontal-form .widget > input,.horizontal-form .widget > textarea {
 	width:78%;
 	float:left;
 }
-form .horizontal-form .widget > fieldset {
+.horizontal-form .widget > fieldset {
 	margin-left:20%;
 }
