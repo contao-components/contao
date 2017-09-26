@@ -1,0 +1,21 @@
+{
+    "name": "contao",
+    "description": "Contao Open Source CMS components",
+    "license": "MIT",
+    "author": {
+        "name": "Leo Feyer",
+        "url": "https://github.com/leofeyer"
+    },
+    "devDependencies": {
+        "gulp": "^3.9.1",
+        "gulp-csso": "^3.0.0",
+        "gulp-ignore": "^2.0.2",
+        "gulp-rename": "^1.2.2",
+        "gulp-svgo": "^1.2.5",
+        "pump": "^1.0.2"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/contao-components/contao.git"
+    }
+}
