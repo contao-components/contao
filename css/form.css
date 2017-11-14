@@ -10,7 +10,7 @@
  * Since fieldset borders are removed in the reset style sheet, adjust the
  * legends accordingly
  */
-form legend {
+legend {
 	width:100%;
 	display:block;
 	font-weight:bold;
@@ -20,8 +20,8 @@ form legend {
 /**
  * Text fields and textareas
  */
-form input[type="text"],form input[type="password"],form input[type="date"],form input[type="datetime"],form input[type="email"],
-form input[type="number"],form input[type="search"],form input[type="tel"],form input[type="time"],form input[type="url"],form input:not([type]),form textarea {
+input[type="text"],input[type="password"],input[type="date"],input[type="datetime"],input[type="email"],
+input[type="number"],input[type="search"],input[type="tel"],input[type="time"],input[type="url"],input:not([type]),textarea {
 	width:100%;
 	display:inline-block;
 	padding:3px 6px;
@@ -41,8 +41,8 @@ form input[type="number"],form input[type="search"],form input[type="tel"],form 
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 }
-form input[type="text"]:focus,form input[type="password"]:focus,form input[type="date"]:focus,form input[type="datetime"]:focus,form input[type="email"]:focus,
-form input[type="number"]:focus,form input[type="search"]:focus,form input[type="tel"]:focus,form input[type="time"]:focus,form input[type="url"]:focus,form input:not([type]):focus,form textarea:focus {
+input[type="text"]:focus,input[type="password"]:focus,input[type="date"]:focus,input[type="datetime"]:focus,input[type="email"]:focus,
+input[type="number"]:focus,input[type="search"]:focus,input[type="tel"]:focus,input[type="time"]:focus,input[type="url"]:focus,input:not([type]):focus,textarea:focus {
 	outline:0;
 	background:#fcfcfc;
 	border-color:#bbb;
@@ -51,44 +51,44 @@ form input[type="number"]:focus,form input[type="search"]:focus,form input[type=
 /**
  * Fix some width and height settings
  */
-form input[type="file"] {
+input[type="file"] {
 	cursor:pointer;
 }
-form select,form input[type="file"] {
+select,input[type="file"] {
 	display:block;
 }
-form button,form input[type="file"],form input[type="image"],form input[type="submit"],form input[type="reset"],form input[type="button"],form input[type="radio"],form input[type="checkbox"] {
+form button,input[type="file"],input[type="image"],input[type="submit"],input[type="reset"],input[type="button"],input[type="radio"],input[type="checkbox"] {
 	width:auto;
 }
-form textarea,form select[multiple],form select[size] {
+textarea,select[multiple],select[size] {
 	height:auto;
 }
 
 /**
  * Checkboxes and radio buttons
  */
-form input[type="radio"],form input[type="checkbox"] {
+input[type="radio"],input[type="checkbox"] {
 	margin:0 3px 0 0;
 }
-form input[type="radio"],form input[type="checkbox"],form label {
+input[type="radio"],input[type="checkbox"],label {
 	vertical-align:middle;
 }
 
 /**
  * Handle disabled and read-only
  */
-form input[disabled],form select[disabled],form textarea[disabled],form input[readonly],form select[readonly],form textarea[readonly] {
+input[disabled],select[disabled],textarea[disabled],input[readonly],select[readonly],textarea[readonly] {
 	cursor:not-allowed;
 	background:#eee;
 }
-form input[type="radio"][disabled],form input[type="checkbox"][disabled],form input[type="radio"][readonly],form input[type="checkbox"][readonly] {
+input[type="radio"][disabled],input[type="checkbox"][disabled],input[type="radio"][readonly],input[type="checkbox"][readonly] {
 	background:transparent;
 }
 
 /**
  * Buttons
  */
-form button,form input[type="submit"],.button {
+form button,input[type="submit"],.button {
 	display:inline-block;
 	padding:4px 15px 4px 14px;
 	margin-bottom:0;
@@ -114,11 +114,11 @@ form button,form input[type="submit"],.button {
 	-o-transition:background .15s linear;
 	transition:background .15s linear;
 }
-form button:hover,form input[type="submit"]:hover,.button:hover {
+form button:hover,input[type="submit"]:hover,.button:hover {
 	text-decoration:none;
 	background-position:0 -15px !important;
 }
-form button:active,form input[type="submit"]:active,.button:active {
+form button:active,input[type="submit"]:active,.button:active {
 	background-color:#e6e6e6;
 	background-position:0 -30px !important;
 }
@@ -126,7 +126,7 @@ form button:active,form input[type="submit"]:active,.button:active {
 /**
  * Blue buttons
  */
-form button.blue,form input[type="submit"].blue,.button.blue {
+form button.blue,input[type="submit"].blue,.button.blue {
 	background-color:#2f96b4;
 	background-image:-moz-linear-gradient(top, #5bc0de, #2f96b4);
 	background-image:-webkit-linear-gradient(top, #5bc0de, #2f96b4);
@@ -136,14 +136,14 @@ form button.blue,form input[type="submit"].blue,.button.blue {
 	border-color:#2f96b4;
 	color:#fff;
 }
-form button.blue:active,form input[type="submit"].blue:active,.button.blue:active {
+form button.blue:active,input[type="submit"].blue:active,.button.blue:active {
 	background-color:#2e95b3;
 }
 
 /**
  * Green buttons
  */
-form button.green,form input[type="submit"].green,.button.green {
+form button.green,input[type="submit"].green,.button.green {
 	background-color:#51a351;
 	background-image:-moz-linear-gradient(top, #62c462, #51a351);
 	background-image:-webkit-linear-gradient(top, #62c462, #51a351);
@@ -153,14 +153,14 @@ form button.green,form input[type="submit"].green,.button.green {
 	border-color:#51a351;
 	color:#fff;
 }
-form button.green:active,form input[type="submit"].green:active,.button.green:active {
+form button.green:active,input[type="submit"].green:active,.button.green:active {
 	background-color:#4f9f4f;
 }
 
 /**
  * Orange buttons
  */
-form button.orange,form input[type="submit"].orange,.button.orange {
+form button.orange,input[type="submit"].orange,.button.orange {
 	background-color:#f89406;
 	background-image:-moz-linear-gradient(top, #fbb450, #f89406);
 	background-image:-webkit-linear-gradient(top, #fbb450, #f89406);
@@ -170,14 +170,14 @@ form button.orange,form input[type="submit"].orange,.button.orange {
 	border-color:#f89406;
 	color:#fff;
 }
-form button.orange:active,form input[type="submit"].orange:active,.button.orange:active {
+form button.orange:active,input[type="submit"].orange:active,.button.orange:active {
 	background-color:#f28f04;
 }
 
 /**
  * Red buttons
  */
-form button.red,form input[type="submit"].red,.button.red {
+form button.red,input[type="submit"].red,.button.red {
 	background-color:#bd362f;
 	background-image:-moz-linear-gradient(top, #ee5f5b, #bd362f);
 	background-image:-webkit-linear-gradient(top, #ee5f5b, #bd362f);
@@ -187,7 +187,7 @@ form button.red,form input[type="submit"].red,.button.red {
 	border-color:#bd362f;
 	color:#fff;
 }
-form button.red:active,form input[type="submit"].red:active,.button.red:active {
+form button.red:active,input[type="submit"].red:active,.button.red:active {
 	background-color:#be322b;
 }
 
@@ -201,9 +201,6 @@ form button.red:active,form input[type="submit"].red:active,.button.red:active {
 	display:block;
 	margin-bottom:6px;
 	font-weight:bold;
-}
-.widget > input,.widget > textarea {
-	width:100%;
 }
 
 /**
