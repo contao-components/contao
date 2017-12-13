@@ -34,7 +34,7 @@ abbr,acronym {
 blockquote,q {
 	quotes:none;
 }
-fieldset,img {
+fieldset,img,iframe {
 	border:0;
 }
 ul {
