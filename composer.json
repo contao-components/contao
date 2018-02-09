@@ -2,7 +2,7 @@
     "name": "contao-components/contao",
     "type": "contao-component",
     "description": "Contao Open Source CMS components",
-    "license": "MIT",
+    "license": "LGPL-3.0-or-later",
     "authors": [
         {
             "name": "Leo Feyer",
