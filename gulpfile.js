@@ -34,4 +34,4 @@ gulp.task('minify-images', function (cb) {
     );
 });
 
-gulp.task('default', ['minify-css', 'minify-images']);
+gulp.task('default', gulp.parallel('minify-css', 'minify-images'));
