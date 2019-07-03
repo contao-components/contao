@@ -52,10 +52,17 @@ img {
 }
 
 /**
+ * Responsive audio (see #441)
+ */
+.audio_container audio {
+	max-width:100%;
+}
+
+/**
  * Responsive videos (see #1348)
  */
-.video_container video,.video_container audio {
-	width:100%;
+.video_container video {
+	max-width:100%;
 	height:auto;
 }
 .responsive {
