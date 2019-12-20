@@ -370,6 +370,10 @@ li.download-element {
 	background-image:url("../images/iconSVGZ.svg");
 }
 
+.ext-webp {
+	background-image:url("../images/iconWEBP.svg");
+}
+
 /* Mailbox files */
 .ext-eml {
 	background-image:url("../images/iconEML.svg");
