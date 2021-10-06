@@ -1,6 +1,6 @@
 'use strict';
 
-var gulp = require('gulp'),
+let gulp = require('gulp'),
     csso = require('gulp-csso'),
     ignore = require('gulp-ignore'),
     rename = require('gulp-rename'),

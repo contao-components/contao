@@ -374,6 +374,18 @@ li.download-element {
 	background-image:url("../images/iconWEBP.svg");
 }
 
+.ext-avif {
+	background-image:url("../images/iconAVIF.svg");
+}
+
+.ext-heic {
+	background-image:url("../images/iconHEIC.svg");
+}
+
+.ext-jxl {
+	background-image:url("../images/iconJXL.svg");
+}
+
 /* Mailbox files */
 .ext-eml {
 	background-image:url("../images/iconEML.svg");
