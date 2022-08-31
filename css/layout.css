@@ -65,26 +65,29 @@ select,input,textarea {
 /**
  * Format the Contao image galleries (now rendered as unordered lists)
  */
-.ce_gallery > ul {
+.ce_gallery > ul,
+.content-gallery > ul {
 	margin:0;
 	padding:0;
 	overflow:hidden;
 	list-style:none;
 }
-.ce_gallery > ul li {
+.ce_gallery > ul li,
+.content-gallery > ul li {
 	float:left;
 }
-.ce_gallery > ul li.col_first {
+.ce_gallery > ul li.col_first,
+.content-gallery > ul li.col_first {
 	clear:left;
 }
 
 /**
  * Float classes (see #6851)
  */
-.float_left {
+.float_left,.media--left {
 	float:left;
 }
-.float_right {
+.float_right,.media--right {
 	float:right;
 }
 
