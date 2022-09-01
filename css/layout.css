@@ -84,10 +84,12 @@ select,input,textarea {
 /**
  * Float classes (see #6851)
  */
-.float_left,.media--left {
+.float_left,
+.media--left > figure {
 	float:left;
 }
-.float_right,.media--right {
+.float_right,
+.media--right > figure {
 	float:right;
 }
 
