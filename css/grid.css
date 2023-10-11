@@ -28,7 +28,7 @@
  * Add a default margin to all content elements, so they align with the floatet
  * ones (otherwise you would have to add "grid12" to every element)
  */
-.mod_article *[class*="ce_"],.mod_article *[class*="mod_"] {
+.mod_article *[class*="ce_"],.mod_article *[class*="mod_"],.mod_article *[class*="content-"] {
 	margin-left:10px;
 	margin-right:10px;
 }
