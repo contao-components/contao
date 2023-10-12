@@ -17,7 +17,7 @@
 /**
  * Set the default margin of the grid columns
  */
-*[class*="grid"] {
+.grid1,.grid2,.grid3,.grid4,.grid5,.grid6,.grid7,.grid8,.grid9,.grid10,.grid11,.grid12 {
 	float:left;
 	margin-left:10px;
 	margin-right:10px;
@@ -28,9 +28,19 @@
  * Add a default margin to all content elements, so they align with the floatet
  * ones (otherwise you would have to add "grid12" to every element)
  */
-.mod_article *[class*="ce_"],.mod_article *[class*="mod_"],.mod_article *[class*="content-"] {
+.mod_article *[class^="ce_"],.mod_article *[class*=" ce_"],
+.mod_article *[class^="content-"],.mod_article *[class*=" content-"],
+.mod_article *[class^="mod_"], .mod_article *[class*=" mod_"] {
 	margin-left:10px;
 	margin-right:10px;
+}
+
+/**
+ * Remove the margin from the content slider
+ */
+.ce_sliderStart > .content-slider {
+	margin-left:0;
+	margin-right:0;
 }
 
 /**
@@ -41,7 +51,8 @@
 	margin-left:0;
 	margin-right:0;
 }
-.mod_article *[class*="layout_"] > *,.mod_article *[class*="event_"] > * {
+.mod_article *[class^="layout_"] > *,.mod_article *[class*=" layout_"] > *,
+.mod_article *[class^="event_"] > *,.mod_article *[class*=" event_"] > * {
 	margin-left:10px;
 	margin-right:10px;
 }
@@ -222,12 +233,12 @@
 	/**
 	 * Show all columns underneath each other
 	 */
-	*[class*="grid"] {
+	.grid1,.grid2,.grid3,.grid4,.grid5,.grid6,.grid7,.grid8,.grid9,.grid10,.grid11,.grid12 {
 		float:none !important;
 		display:block !important;
 		width:auto !important;
 	}
-	*[class*="offset"] {
+	.offset1,.offset2,.offset3,.offset4,.offset5,.offset6,.offset7,.offset8,.offset9,.offset10,.offset11,.offset12 {
 		margin-left:10px !important;
 	}
 }
