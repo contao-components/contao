@@ -44,12 +44,6 @@ img {
 	max-width:100%;
 	height:auto;
 }
-.ie7 img {
-	-ms-interpolation-mode:bicubic;
-}
-.ie8 img {
-	width:auto; /* see #5789 */
-}
 
 /**
  * Responsive audio (see #441)
