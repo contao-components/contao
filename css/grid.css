@@ -30,7 +30,8 @@
  */
 .mod_article *[class^="ce_"],.mod_article *[class*=" ce_"],
 .mod_article *[class^="content-"],.mod_article *[class*=" content-"],
-.mod_article *[class^="mod_"], .mod_article *[class*=" mod_"] {
+.mod_article *[class^="mod_"], .mod_article *[class*=" mod_"].
+.mod_article *[class^="module-"], .mod_article *[class*=" module-"] {
 	margin-left:10px;
 	margin-right:10px;
 }
