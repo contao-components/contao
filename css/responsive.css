@@ -92,3 +92,11 @@ img {
 .responsive.ratio-32 {
     padding-bottom:66.6666%;
 }
+.aspect--9\:16,
+.responsive.ratio-916 {
+    padding-bottom:177.7777%;
+}
+.aspect--1\:1,
+.responsive.ratio-11 {
+    padding-bottom:100%;
+}
